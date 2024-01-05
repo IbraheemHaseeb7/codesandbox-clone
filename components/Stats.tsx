@@ -2,7 +2,7 @@ import CountUp from "react-countup";
 
 export default function Stats() {
   return (
-    <div className="w-full h-[20rem] flex justify-center items-center">
+    <div className="w-full grid grid-cols-stats justify-items-center items-center max-lg:grid-cols-stats-lg max-sm:grid-cols-stats-sm">
       {data.map(({ num, postfix, description }) => {
         return (
           <Box
@@ -27,7 +27,7 @@ function Box({
   description: string;
 }) {
   return (
-    <div className="w-[25%] flex flex-col justify-center items-center">
+    <div className="w-full h-[15rem] flex flex-col justify-center items-center max-sm:h-[10rem]">
       <div className="w-[90%] flex flex-col justify-start items-start border-t-[5px] border-dark-gray">
         <h1 className="text-[4rem] text-white font-bold">
           <CountUp end={num} /> {postfix}

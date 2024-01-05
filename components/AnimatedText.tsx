@@ -15,19 +15,7 @@ const Character = styled(motion.span)`
   margin-right: -0.05em;
 `;
 
-export default function AnimatedText({
-  title,
-  color,
-  fontSize,
-  fontWeight,
-  lineHeight,
-}: {
-  title: string;
-  color: string;
-  fontSize: string;
-  fontWeight: string;
-  lineHeight: string;
-}) {
+export default function AnimatedText({ title, styles }: { title: string; styles: string }) {
   const text: string = title;
   const ctrls = useAnimation();
 
@@ -67,11 +55,7 @@ export default function AnimatedText({
 
   return (
     <div className="w-[80%]">
-      <Title
-        aria-label={text}
-        role="heading"
-        className={`${color} ${fontSize} ${fontWeight} ${lineHeight}`}
-      >
+      <Title aria-label={text} role="heading" className={`${styles}`}>
         {text.split(" ").map((word, index) => {
           return (
             <Word

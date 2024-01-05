@@ -36,7 +36,10 @@ const config: Config = {
       },
       gridTemplateColumns: {
         nav: "10% 70% 20%",
-        "nav-lg": "50% 50%",
+        "nav-lg": "25% 75%",
+        stats: "repeat(4, 25%)",
+        "stats-lg": "repeat(2, 50%)",
+        "stats-sm": "100%",
       },
     },
   },
