@@ -1,4 +1,4 @@
-import type { Config } from 'tailwindcss'
+import type { Config } from "tailwindcss";
 
 const config: Config = {
   content: [
@@ -41,8 +41,14 @@ const config: Config = {
         "stats-lg": "repeat(2, 50%)",
         "stats-sm": "100%",
       },
+      boxShadow: {
+        hiding: "0 0 2px 5px #1d1d1d",
+      },
+      fontFamily: {
+        dosis: "Dosis, sans-serif",
+      },
     },
   },
   plugins: [],
 };
-export default config
+export default config;
