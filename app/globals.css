@@ -25,3 +25,20 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+.opacity-0 {
+  opacity: 0;
+}
+
+.opacity-100 {
+  opacity: 1;
+}
+
+.show-outline {
+  outline: 2px solid #000; /* Adjust color and thickness as needed */
+}
+
+.show-color {
+  background-color: #00f; /* Adjust color as needed */
+}
+
