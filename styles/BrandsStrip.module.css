@@ -1,0 +1,10 @@
+.brands_strip {
+    animation: linearMovement 25s linear 0s infinite;
+    animation-fill-mode: forwards;
+}
+
+@keyframes linearMovement {
+    100% {
+        transform: translateX(-2960px);
+    }
+}

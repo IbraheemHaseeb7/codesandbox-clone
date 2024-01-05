@@ -34,6 +34,10 @@ const config: Config = {
       borderColor: {
         "dark-gray": "#1d1d1d",
       },
+      gridTemplateColumns: {
+        nav: "10% 70% 20%",
+        "nav-lg": "50% 50%",
+      },
     },
   },
   plugins: [],
