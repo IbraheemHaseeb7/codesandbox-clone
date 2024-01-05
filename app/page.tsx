@@ -4,6 +4,7 @@ import BrandsStrip from "@/components/BrandsStrip";
 import Greetings from "@/components/Greetings";
 import Navbar from "@/components/Navbar";
 import ScrollingAnimation from "@/components/ScrollingAnimation";
+import ScrollingAnimationGSAP from "@/components/ScrollingAnimationGSAP";
 import Stats from "@/components/Stats";
 
 export default function Home() {
@@ -13,7 +14,8 @@ export default function Home() {
       <Greetings />
       <BrandsStrip />
       <Stats />
-      <ScrollingAnimation />
+      {/* <ScrollingAnimation /> */}
+      <ScrollingAnimationGSAP />
     </main>
   );
 }
