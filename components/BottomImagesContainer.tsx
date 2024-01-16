@@ -36,6 +36,7 @@ export default function BottomImagesContainer() {
         return (
           <ImageWithTextAndLink
             index={index}
+            key={index}
             image={image}
             title={title}
             description={description}
