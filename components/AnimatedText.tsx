@@ -15,7 +15,15 @@ const Character = styled(motion.span)`
   margin-right: -0.05em;
 `;
 
-export default function AnimatedText({ title, styles }: { title: string; styles: string }) {
+export default function AnimatedText({
+  title,
+  styles,
+  containerStyles,
+}: {
+  title: string;
+  styles: string;
+  containerStyles?: string;
+}) {
   const text: string = title;
   const ctrls = useAnimation();
 
@@ -54,7 +62,7 @@ export default function AnimatedText({ title, styles }: { title: string; styles:
   };
 
   return (
-    <div className="w-[80%]">
+    <div className={`w-[80%] ${containerStyles}`}>
       <Title aria-label={text} role="heading" className={`${styles}`}>
         {text.split(" ").map((word, index) => {
           return (

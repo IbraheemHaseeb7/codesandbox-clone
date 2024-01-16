@@ -30,6 +30,7 @@ const config: Config = {
         background: "#161616",
         nav: "#0e0e0e",
         "dark-gray": "#1d1d1d",
+        "dark-gray-lighter": "#050505",
       },
       borderColor: {
         "dark-gray": "#1d1d1d",
@@ -40,9 +41,11 @@ const config: Config = {
         stats: "repeat(4, 25%)",
         "stats-lg": "repeat(2, 50%)",
         "stats-sm": "100%",
+        "vscode-and-git": "50% 50%",
       },
       boxShadow: {
         hiding: "0 0 2px 5px #1d1d1d",
+        "image-half-blur": "50px 0px 50px black inset",
       },
       fontFamily: {
         dosis: "Dosis, sans-serif",

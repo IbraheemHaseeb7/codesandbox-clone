@@ -1,10 +1,13 @@
 "use client";
 
+import AnimatedText from "@/components/AnimatedText";
+import BottomImagesContainer from "@/components/BottomImagesContainer";
+import BottomInviter from "@/components/BottomInviter";
 import BrandsStrip from "@/components/BrandsStrip";
+import Footer from "@/components/Footer";
 import Greetings from "@/components/Greetings";
 import Navbar from "@/components/Navbar";
 import ScrollingAnimation from "@/components/ScrollingAnimation";
-import ScrollingAnimationGSAP from "@/components/ScrollingAnimationGSAP";
 import Stats from "@/components/Stats";
 
 export default function Home() {
@@ -16,8 +19,20 @@ export default function Home() {
         <BrandsStrip />
         <Stats />
       </div>
-      {/* <ScrollingAnimation /> */}
-      <ScrollingAnimationGSAP />
+      <ScrollingAnimation />
+      <div className="bg-black w-full h-[50rem] flex justify-center items-center flex-col gap-10">
+        <AnimatedText
+          title="From idea to production in record time."
+          styles="w-2/3 text-[8rem] font-bold leading-[1] max-md:text-[5rem] max-sm:text-[3.5rem] text-center"
+          containerStyles="flex justify-center items-center"
+        />
+        <a className="cursor-pointer hover:underline text-lime text-[1.5rem]">
+          {"<> Try for free"}
+        </a>
+      </div>
+      <BottomImagesContainer />
+      <BottomInviter />
+      <Footer />
     </main>
   );
 }
