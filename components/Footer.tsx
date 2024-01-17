@@ -52,7 +52,10 @@ export default function Footer() {
 
                   {links.map((link) => {
                     return (
-                      <a className="cursor-pointer text-dark-text hover:text-light-text">
+                      <a
+                        key={link}
+                        className="cursor-pointer text-dark-text hover:text-light-text"
+                      >
                         {link}
                       </a>
                     );
