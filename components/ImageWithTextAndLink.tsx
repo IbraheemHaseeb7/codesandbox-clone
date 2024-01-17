@@ -20,10 +20,10 @@ export default function ImageWithTextAndLink({
       }`}
     >
       <div className="w-full h-full bg-[#1d1d1d67] flex flex-col justify-center items-center absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] gap-5 z-20">
-        <h1 className="text-[3rem] font-semibold w-2/3 text-center leading-[3rem]">
+        <h1 className="text-[3rem] font-semibold w-2/3 text-center leading-[3rem] max-md:text-[2rem] max-md:leading-[2rem]">
           {title}
         </h1>
-        <p>{description}</p>
+        <p className="w-2/3">{description}</p>
         <div className="flex justify-center items-center gap-[3rem]">
           {links.map((data, index) => {
             return (

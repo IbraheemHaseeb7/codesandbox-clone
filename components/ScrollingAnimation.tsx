@@ -27,8 +27,19 @@ export default function ScrollingAnimation() {
   const shortenText4: any = useRef();
 
   // constants
-  const ANIMATION_START_POINT = 700;
-  const ANIMATION_END_POINT = 600; // in percentages
+  let ANIMATION_START_POINT = 700;
+  let ANIMATION_END_POINT = 600; // in percentages
+
+  // adjusting animation starting and ending point
+  // for responsive design
+  useEffect(() => {
+    if (window.innerWidth < 768) {
+      ANIMATION_START_POINT = 1000;
+    }
+    if (window.innerWidth < 450) {
+      ANIMATION_START_POINT = 1300;
+    }
+  }, [window.innerWidth]);
 
   // shadowing animation
   useGSAP(() => {
@@ -78,7 +89,7 @@ export default function ScrollingAnimation() {
       scrollTrigger: {
         trigger: el,
         scrub: true,
-        start: `800px center`,
+        start: `${ANIMATION_START_POINT} center`,
         end: `${ANIMATION_END_POINT - 50}% center`,
       },
     });
@@ -87,10 +98,20 @@ export default function ScrollingAnimation() {
     timeline.from(codeTextRef.current, { opacity: 0 });
     timeline.to(codeTextRef.current, { opacity: 1 });
     timeline.to(codeTextRef.current, { opacity: 0 });
-    timeline.to(codingIDEImage.current, { opacity: 0, scale: 4 });
-    timeline.to(el, { background: "black", border: "none" });
-    timeline.to(codingIDEImage.current, { opacity: 1, scale: 3.5 });
-    timeline.to(codingIDEImage.current, { opacity: 0, scale: 3 });
+
+    // adding breakpoints for responsive animation
+    if (window.innerWidth < 768) {
+      timeline.to(el, { background: "black", border: "none" });
+      timeline.to(codingIDEImage.current, { opacity: 0, scale: 2 });
+      timeline.to(codingIDEImage.current, { opacity: 1, scale: 1.5 });
+      timeline.to(codingIDEImage.current, { opacity: 0, scale: 1 });
+    } else {
+      timeline.to(codingIDEImage.current, { opacity: 0, scale: 4 });
+      timeline.to(el, { background: "black", border: "none" });
+      timeline.to(codingIDEImage.current, { opacity: 1, scale: 3.5 });
+      timeline.to(codingIDEImage.current, { opacity: 0, scale: 3 });
+    }
+
     timeline.to(imageAndCodeTextRef.current, { opacity: 0, y: -25 });
     timeline.to(imageAndCodeTextRef.current, { opacity: 1, y: 0 });
     timeline.to(imageAndCodeTextRef.current, { opacity: 0, y: 25 });
@@ -100,7 +121,7 @@ export default function ScrollingAnimation() {
     timeline.to(anywhereRef.current, { opacity: 1 });
     timeline.to(
       anytimeAnywhereRef.current,
-      { x: "-45%", duration: 3 },
+      { x: "-50%", duration: 3 },
       "anytime_sync"
     );
     timeline.to(
@@ -218,14 +239,14 @@ export default function ScrollingAnimation() {
           {/* CODE TEXT APPEAR */}
           <h1
             ref={codeTextRef}
-            className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] font-extrabold w-max text-[7rem]"
+            className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] font-extrabold w-max text-[7rem] max-md:text-[4rem] max-sm:text-[2rem]"
           >
             Code in the Cloud
           </h1>
           <img
             ref={codingIDEImage}
             src="https://codesandbox.io/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimage.2b1cff1a.gif&w=1920&q=75"
-            className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] scale-[4] opacity-0"
+            className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] opacity-0"
           />
 
           {/* Contains the square image with some text as well */}
@@ -237,7 +258,7 @@ export default function ScrollingAnimation() {
               className="w-[20rem]"
               src="https://codesandbox.io/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimage.d59797e6.png&w=2048&q=100"
             />
-            <p className="text-[2rem] w-[50rem] text-center font-bold">
+            <p className="text-[2rem] w-[50rem] text-center font-bold max-md:text-[1rem] max-md:w-full">
               Run your code in powerful microVMs and build anything without
               limits. We configure your environment for you and keep your code
               always ready, behind a URL.
@@ -249,13 +270,19 @@ export default function ScrollingAnimation() {
             className="flex justify-center items-center absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]"
             ref={anytimeAnywhereRef}
           >
-            <h1 ref={anytimeRef} className="opacity-0 font-bold text-[7rem]">
+            <h1
+              ref={anytimeRef}
+              className="opacity-0 font-bold text-[7rem] max-md:text-[4rem] max-sm:text-[2rem]"
+            >
               Anytime,{" "}
             </h1>
-            <h1 ref={anywhereRef} className="opacity-0 font-bold text-[7rem]">
+            <h1
+              ref={anywhereRef}
+              className="opacity-0 font-bold text-[7rem] max-md:text-[4rem] max-sm:text-[2rem]"
+            >
               Anywhere
             </h1>
-            <svg className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[50%] w-full">
+            <svg className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[50%] w-full max-md:translate-y-[20%]">
               <line
                 ref={anytimeUnderline}
                 x1="0"
@@ -277,11 +304,11 @@ export default function ScrollingAnimation() {
             className="w-[98vw] h-[250vh] absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-20%] flex justify-center items-start gap-[15rem] opacity-0 flex-col"
             ref={vscodeExtensionsAndGit}
           >
-            <div className="flex justify-center items-center gap-5">
+            <div className="flex justify-center items-center gap-5 max-md:flex-col">
               <div className="w-1/2">
                 <img src="https://codesandbox.io/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Feditors.3475b465.png&w=3840&q=100" />
               </div>
-              <div className="flex flex-col justify-center items-start w-1/3 text-[2.5rem] gap-10">
+              <div className="flex flex-col justify-center items-start w-1/3 text-[2.5rem] gap-10 max-md:w-2/3 max-md:text-[1rem]">
                 <h3>
                   Code and collaborate from any editor or device: browser, VS
                   Code or iOS.
@@ -290,7 +317,7 @@ export default function ScrollingAnimation() {
                   Share a link to your code to get feedback, either async or
                   with a live coding session.
                 </h3>
-                <div className="flex justify-center items-start flex-col text-[2rem]">
+                <div className="flex justify-center items-start flex-col text-[2rem] max-md:text-[1rem]">
                   <a className="text-lime hover:underline cursor-pointer">
                     Install VS Code Extension
                   </a>
@@ -300,11 +327,11 @@ export default function ScrollingAnimation() {
                 </div>
               </div>
             </div>
-            <div className="grid grid-cols-vscode-and-git w-full justify-items-center">
-              <h1 className="text-[8rem] col-span-3 w-3/4 text-center font-bold leading-[6rem]">
+            <div className="grid grid-cols-vscode-and-git w-full justify-items-center max-md:grid-cols-1">
+              <h1 className="text-[8rem] col-span-3 w-3/4 text-center font-bold leading-[6rem] max-md:text-[2.5rem] max-md:leading-[2.5rem] max-md:col-span-1">
                 Accelerate your git workflow.
               </h1>
-              <div className="flex flex-col justify-center items-start w-3/4 text-[2.5rem] gap-5 h-[50rem]">
+              <div className="flex flex-col justify-center items-start w-3/4 text-[2.5rem] gap-5 h-[50rem] max-md:h-auto max-md:text-[1rem] max-md:pt-10">
                 <h3>
                   Never wait for a dev server again. We make all your branches
                   instantly available by hot resuming VMs.
@@ -314,7 +341,7 @@ export default function ScrollingAnimation() {
                   controls.
                 </h3>
               </div>
-              <div className="w-4/5 relative">
+              <div className="w-4/5 relative max-md:h-[20rem]">
                 <img
                   className="w-5/6 h-3/4 absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]"
                   src="https://codesandbox.io/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimage.a521d04d.jpg&w=1200&q=75"
@@ -325,11 +352,11 @@ export default function ScrollingAnimation() {
           </div>
 
           {/* Shorten the review cycle text */}
-          <div className="w-[50vw] flex flex-wrap justify-center items-center font-bold text-[8rem] absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] gap-7">
-            <h1 className="h-16 opacity-0" ref={shortenText1}>
+          <div className="w-[50vw] flex flex-wrap justify-center items-center font-bold text-[8rem] absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] gap-7 max-md:text-[4rem] max-md:gap-4 max-sm:text-[2rem] max-sm:gap-2">
+            <h1 className="h-16 opacity-0 max-md:h-8" ref={shortenText1}>
               Shorten
             </h1>
-            <h1 className="h-16 opacity-0" ref={shortenText2}>
+            <h1 className="h-16 opacity-0 max-md:h-8" ref={shortenText2}>
               the
             </h1>
             <h1 className="opacity-0" ref={shortenText3}>
