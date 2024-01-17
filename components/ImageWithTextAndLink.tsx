@@ -15,8 +15,8 @@ export default function ImageWithTextAndLink({
 }) {
   return (
     <div
-      className={`w-full h-[50rem] relative ${
-        index === 0 && "col-span-3 mb-10"
+      className={`w-full h-[50rem] relative max-md:mb-10 ${
+        index === 0 && "col-span-3 mb-10 max-md:mb-0"
       }`}
     >
       <div className="w-full h-full bg-[#1d1d1d67] flex flex-col justify-center items-center absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] gap-5 z-20">
