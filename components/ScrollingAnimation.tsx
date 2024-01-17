@@ -1,10 +1,43 @@
 import { useGSAP } from "@gsap/react";
-import { MutableRefObject, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 export default function ScrollingAnimation() {
+  const [windowSize, setWindowSize] = useState({
+    width: 0,
+    height: 0,
+  });
+
+  // adding functionality for responsive design
+  useEffect(() => {
+    if (typeof window === undefined) {
+      return;
+    }
+
+    setWindowSize({
+      width: window.innerWidth,
+      height: window.innerHeight,
+    });
+
+    const handleResize = (): void =>
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+
+    if (window.innerWidth < 768) {
+      ANIMATION_START_POINT = 1000;
+    }
+    if (window.innerWidth < 450) {
+      ANIMATION_START_POINT = 1300;
+    }
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   // References for the Animation
   const boxRef: any = useRef();
   const boxBGCircleRef: any = useRef();
@@ -29,17 +62,6 @@ export default function ScrollingAnimation() {
   // constants
   let ANIMATION_START_POINT = 700;
   let ANIMATION_END_POINT = 600; // in percentages
-
-  // adjusting animation starting and ending point
-  // for responsive design
-  useEffect(() => {
-    if (window.innerWidth < 768) {
-      ANIMATION_START_POINT = 1000;
-    }
-    if (window.innerWidth < 450) {
-      ANIMATION_START_POINT = 1300;
-    }
-  }, [window.innerWidth]);
 
   // shadowing animation
   useGSAP(() => {
