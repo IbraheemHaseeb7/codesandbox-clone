@@ -6,6 +6,7 @@ import BottomInviter from "@/components/BottomInviter";
 import BrandsStrip from "@/components/BrandsStrip";
 import Footer from "@/components/Footer";
 import Greetings from "@/components/Greetings";
+import KeepScrolling from "@/components/KeepScrolling";
 import Navbar from "@/components/Navbar";
 import ScrollingAnimation from "@/components/ScrollingAnimation";
 import Stats from "@/components/Stats";
@@ -33,6 +34,7 @@ export default function Home() {
       <BottomImagesContainer />
       <BottomInviter />
       <Footer />
+      <KeepScrolling />
     </main>
   );
 }
