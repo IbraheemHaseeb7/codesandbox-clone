@@ -31,7 +31,7 @@ export default function BottomImagesContainer() {
   ];
 
   return (
-    <div className="w-full bg-black grid grid-cols-vscode-and-git justify-items-center px-10 max-md:grid-cols-1 max-md:grid-rows-[repeat(3,50%)]">
+    <div className="w-full bg-black grid grid-cols-vscode-and-git justify-items-center px-10 max-md:grid-cols-1 max-md:grid-rows-3">
       {data.map(({ image, title, description, links }, index) => {
         return (
           <ImageWithTextAndLink
