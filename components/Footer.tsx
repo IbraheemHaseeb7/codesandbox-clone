@@ -35,12 +35,12 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="w-full min-h-[40rem] flex justify-center items-center flex-col max-md:gap-10">
+    <footer className="w-full min-h-[40rem] flex justify-evenly items-center flex-col max-md:gap-10">
       <div className="flex justify-center items-center h-4/5 w-4/5 max-md:flex-col">
-        <div className="flex justify-start items-start h-4/5 pr-[10rem] max-md:pr-0 max-md:self-start max-md:my-5 max-md:mt-20">
+        <div className="h-[20rem] flex justify-start items-start pr-[10rem] max-md:pr-0 max-md:self-start max-md:my-5 max-md:h-auto max-md:mt-20">
           <div className="w-[2rem] h-[2rem] border-white border-[3px]  max-md:justify-self-start"></div>
         </div>
-        <div className="flex justify-center items-center h-4/5 w-full flex-wrap max-md:gap-10">
+        <div className="flex justify-start items-start h-4/5 w-full max-md:flex-wrap max-md:gap-10">
           {data.map(({ title, links }) => {
             return (
               <div
